@@ -27,11 +27,47 @@ requires a TinyMCE editor.
 
 == Installation
 
-* Install this plugin into vendor/plugins/tinymce_hammer.
-* Download Moxiecode's TinyMCE and install it somewhere inside of plublic.
-  The assumed default path is RAILS_ROOT/public/javascripts/tiny_mce.
+1) Install this plugin into vendor/plugins/tinymce_hammer
+2) Install TinyMCE somwhere inside public/ (the default location is assumed to
+   be RAILS_ROOT/public/javascript/tiny_mce).
 
-    http://tinymce.moxiecode.com/download.php
+   Get TinyMCE here: http://tinymce.moxiecode.com/download.php
+
+== Basic Usage
+
+The simplest method to you TinyMCE is to use one of the view helpers that
+wrap the most basic textfield.
+
+=== Example 1: tinymce_tag (form tag helper)
+
+This is your basic drop-in replacement for text_area_tag:
+
+  <%= tinymce_tag('comment[body]', 'Your comment goes here ...') %>
+
+=== Example 2: tinymce (form helper)
+
+This is just like the text_area helper, it assumes there is an instance
+variable, and if found will pull data from that to populate the field with.
+
+  <%= tinymce(:comment, :body) %>
+
+=== Example 3: tinymce (form builder helepr)
+
+  <%- form_for @comment do |form| -%>
+    <%= form.label :body %>
+    <%= form.tinymce :body %>
+  <% end %>
+
+== Advanced Usage
+
+The basic usage examples above are great for getting a text editor up and 
+runningly quickly.  You may find yourself needing more then those helpers
+provide.  Some possible reasons for wanting a more advanced configuration:
+You maybe:
+
+* only want the combined javascript TinyMCE file provided by tinymce_hammer
+* require multiple editors on the same page that are configured differently
+* need to register javascript callbacks with TinyMCE
 
 == Plugin Configuration
 
@@ -57,42 +93,6 @@ Here is a sample configuration file:
   Tinymce::Hammer.install_path = '/javascripts/lib/tiny_mce'
   Tinymce::Hammer.plugins = %w(safari table paste paste2 tabfocus)
   Tinymce::Hammer.languages = %w(en es)
-
-== Basic Usage
-
-The simplest method to you TinyMCE is to use one of the view helpers that
-wrap the most basic textfield.
-
-=== Example 1: tinymce_tag helper
-
-This is your basic drop-in replacement for text_area_tag:
-
-  <%= tinymce_tag('comment[body]', 'Your comment goes here ...') %>
-
-=== Example 2, tinymce helper
-
-This is just like the text_area helper, it assumes there is an instance
-variable, and if found will pull data from that to populate the field with.
-
-  <%= tinymce(:comment, :body) %>
-
-=== Example 3, tinymce with form builder
-
-  <%- form_for @comment do |form| -%>
-    <%= form.label :body %>
-    <%= form.tinymce :body %>
-  <% end %>
-
-== Advanced Usage
-
-The basic usage examples above are great for getting a text editor up and 
-runningly quickly.  You may find yourself needing more then those helpers
-provide.  Some possible reasons for wanting a more advanced configuration:
-You maybe:
-
-* only want the combined javascript TinyMCE file provided by tinymce_hammer
-* require multiple editors on the same page that are configured differently
-* need to register javascript callbacks with TinyMCE
 
 
 

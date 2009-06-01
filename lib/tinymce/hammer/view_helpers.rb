@@ -50,20 +50,20 @@ module Tinymce::Hammer::ViewHelpers
 
   def tinymce_tag name, content = '', options = {}
     require_tinymce_hammer
-    append_tinymce_class(options)
+    append_class_name(options, 'tinymce')
     text_area_tag(name, content, options)
   end
 
   def tinymce object_name, method, options = {}
     require_tinymce_hammer
-    append_tinymce_class(options)
+    append_class_name(options, 'tinymce')
     text_area(object_name, method, options)
   end
 
-  def append_tinymce_class options #:nodoc
-    key = options.has_key?('class') ? 'class' : :class
-    unless options[key].to_s =~ /(^|\s+)tinymce(\s+|$)/
-      options[key] = "#{options[key]} tinymce".lstrip
+  def append_class_name options, class_name #:nodoc:
+    key = options.has_key?('class') ? 'class' : :class 
+    unless options[key].to_s =~ /(^|\s+)#{class_name}(\s+|$)/
+      options[key] = "#{options[key]} #{class_name}".strip
     end
     options
   end
