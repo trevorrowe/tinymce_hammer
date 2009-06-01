@@ -1,29 +1,11 @@
 = tinymce_hammer
 
-tinymce_hammer's purpose is to simplify using TinyMCE with a Rails application.
-TinyMCE is a WYSIWYG html text editor for the web. 
+tinymce_hammer makes its easy to user the TinyMCE WYSIWYG editor inside a Ruby
+On Rails (2.3+) application.  What it does:
 
-== Why Use tinymce_hammer
-
-The standard and simple methods for loading tiny are ugly and slow (my
-opinion).  TinyMCE loads each js file it requires via XMLHttpRequest, one at a 
-time.  
-
-* A simple editor with a few plugins can easily require 15 different js files!
-* XMLHttpRequest doesn't cache the files, so it must refetch after each refresh
-* It's *slow*
-
-To address this, this plugin combines all of the following js files into one
-file and caches that file to disk:
-
-* tiny mce
-* plugin files
-* theme files
-* language files (for tiny mce and all loaded plugins)
-
-On top of combining javascript files, tinymce_hammer also provides a few
-helpers to make it easy to load this combined file when the current page
-requires a TinyMCE editor.
+* combines all TinyMCE js files into 1 .js file (must faster editor loading)
+* provides form helpers (all 3 varieties)
+* makes it simple to lazy load TinyMCE
 
 == Installation
 
@@ -151,3 +133,10 @@ by tinymce_hammer.  If this doesn't work for your, try the advanced usage.
     [:theme_advanced_buttons3, ''],
     [:valid_elements, "a[href|title],blockquote[cite],br,caption,cite,code,dl,dt,dd,em,i,img[src|alt|title|width|height|align],li,ol,p,pre,q[cite],small,strike,strong/b,sub,sup,u,ul"],
   ]
+
+== Questions
+
+The best way to get help is to post to the mailing list (google group).  
+
+  http://groups.google.com/group/tinymce_hammer/topics
+
