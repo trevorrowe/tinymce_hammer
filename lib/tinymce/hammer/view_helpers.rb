@@ -1,11 +1,71 @@
 module Tinymce::Hammer::ViewHelpers
 
-  def tinymce_hammer_js
-    if @tinymce_hammer_required
-      javascript_include_tag(tinymce_hammer_js_path)
+  # If you call this method in your document head two script tags will be
+  # inserted when tinymce is required, otherwise nothing will be inserted.
+  def init_tinymce_hammer_if_required
+    if tinymce_hammer_required?
+      tinymce_hammer_javascript_tags
     else
       nil
     end
+  end
+
+  # Returns two script tags.  The first loads the combined javascript file
+  # containing tinymce.  The second tag initializes tiny mce.
+  def tinymce_hammer_javascript_tags
+
+    init = Tinymce::Hammer.init.collect{|key,value|
+      "#{key} : #{value.to_json}"
+    }.join(', ')
+
+    init = <<-JS
+      <script type="text/javascript">
+        TinymceHammer = {
+          init : function() {
+            var init = { #{init} };
+            init.mode = 'specific_textareas';
+            init.editor_selector = 'tinymce';
+            init.plugins = '#{Tinymce::Hammer.plugins.join(',')}';
+            tinyMCE.init(init);
+          },
+          initOnLoad : function () {
+            var onloadAlias = window.onload;
+            if (typeof window.onload != 'function') {
+              window.onload = TinymceHammer.init;
+            } else {
+              window.onload = function() {
+                if (onloadAlias) {
+                  onloadAlias();
+                }
+                TinymceHammer.init();
+              }
+            }
+          }
+        };
+        TinymceHammer.initOnLoad();
+      </script>
+    JS
+    [javascript_include_tag(tinymce_hammer_js_path), init].join("\n")
+  end
+
+  def tinymce_tag name, content = '', options = {}
+    require_tinymce_hammer
+    append_tinymce_class(options)
+    text_area_tag(name, content, options)
+  end
+
+  def tinymce object_name, method, options = {}
+    require_tinymce_hammer
+    append_tinymce_class(options)
+    text_area(object_name, method, options)
+  end
+
+  def append_tinymce_class options #:nodoc
+    key = options.has_key?('class') ? 'class' : :class
+    unless options[key].to_s =~ /(^|\s+)tinymce(\s+|$)/
+      options[key] = "#{options[key]} tinymce".lstrip
+    end
+    options
   end
 
 end
