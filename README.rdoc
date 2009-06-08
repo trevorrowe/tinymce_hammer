@@ -3,19 +3,30 @@
 tinymce_hammer makes its easy to user the TinyMCE WYSIWYG editor inside a Ruby
 On Rails (2.3+) application.  What it does:
 
-* combines all TinyMCE js files into 1 .js file (must faster editor loading)
-* provides form helpers (all 3 varieties)
-* makes it simple to lazy load TinyMCE
+* Easy to use, two-step installation and you are ready to go.  Form helpers are
+  provided for most common cases.
+
+* Flexible, need to lazy load TinyMCE w/javascript?  Need two different editors
+  on the same page?  Want to user your own form helpers? No problem.
+
+* Fast, TinyMCE requests lots of .js files for the most basic of editor
+  configurations.  It does all this over XMLHttpRequest.  tinymce_hammer
+  eliminates this by combining all required library files (plugins, themes,
+  languages, etc) into one javascript file.
+
+See the plugin website for more information: http://tinymcehammer.lanalot.com/
 
 == Installation
 
-1. Download and install this plugin into vendor/plugins/tinymce_hammer
+1. Download and this plugin and copy to vendor/plugins/tinymce_hammer
 2. Download TinyMCE (http://tinymce.moxiecode.com/download.php) and place here:
 
      RAILS_ROOT/public/javascript/tiny_mce
 
    If you want to move your TinyMCE installation to a different directory, 
-   see the configuration section.
+   see the configuration section: 
+
+     http://tinymcehammer.lanalot.com/tutorials/configuration/
 
 == Basic Usage
 
