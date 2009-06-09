@@ -19,14 +19,16 @@ See the plugin website for more information: http://tinymcehammer.lanalot.com/
 == Installation
 
 1. Download and this plugin and copy to vendor/plugins/tinymce_hammer
-2. Download TinyMCE (http://tinymce.moxiecode.com/download.php) and place here:
+2. Run the following rake task:
+
+     rake tinymce:install
+
+   This will copy TinyMCE to:
 
      RAILS_ROOT/public/javascript/tiny_mce
 
-   If you want to move your TinyMCE installation to a different directory, 
-   see the configuration section: 
-
-     http://tinymcehammer.lanalot.com/tutorials/configuration/
+  If you need a different install path for TinyMCE see the configuration
+  section below for instructions on changing the default path.
 
 == Basic Usage
 
