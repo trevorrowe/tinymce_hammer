@@ -27,8 +27,8 @@ See the plugin website for more information: http://tinymcehammer.lanalot.com/
 
      RAILS_ROOT/public/javascript/tiny_mce
 
-  If you need a different install path for TinyMCE see the configuration
-  section below for instructions on changing the default path.
+   If you need a different install path for TinyMCE see the configuration
+   section below for instructions on changing the default path.
 
 == Basic Usage
 
