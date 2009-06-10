@@ -19,11 +19,11 @@ See the plugin website for more information: http://tinymcehammer.lanalot.com/
 == Installation
 
 1. Download and this plugin and copy to vendor/plugins/tinymce_hammer
-2. Run the following rake task:
+2. Run the following generator:
 
-     rake tinymce:install
+    script/generate tinymce_installation
 
-   This will copy TinyMCE to:
+   This will install TinyMCE to:
 
      RAILS_ROOT/public/javascript/tiny_mce
 
