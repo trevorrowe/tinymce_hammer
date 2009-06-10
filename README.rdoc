@@ -1,5 +1,7 @@
 = tinymce_hammer
 
+See the plugin website for guides/tutorials: http://tinymcehammer.lanalot.com/
+
 tinymce_hammer makes its easy to user the TinyMCE WYSIWYG editor inside a Ruby
 On Rails (2.3+) application.  What it does:
 
@@ -13,8 +15,6 @@ On Rails (2.3+) application.  What it does:
   configurations.  It does all this over XMLHttpRequest.  tinymce_hammer
   eliminates this by combining all required library files (plugins, themes,
   languages, etc) into one javascript file.
-
-See the plugin website for more information: http://tinymcehammer.lanalot.com/
 
 == Installation
 
