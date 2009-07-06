@@ -45,6 +45,9 @@ class TinymceInstallationGenerator < Rails::Generator::Base
         'plugins/advlink/langs',
         'plugins/advlink/langs/en_dlg.js',
         'plugins/advlink/link.htm',
+        'plugins/inlinepopups/editor_plugin.js',
+        'plugins/inlinepopups/editor_plugin_src.js',
+        'plugins/autoresize',
         'plugins/autosave',
         'plugins/autosave/editor_plugin.js',
         'plugins/autosave/editor_plugin_src.js',
@@ -350,18 +353,20 @@ class TinymceInstallationGenerator < Rails::Generator::Base
         'utils/form_utils.js',
         'utils/mctabs.js',
         'utils/validate.js',
-      ].each do |file|
+      ].each do |path|
 
-        src = File.join(src_prefix, file)
-        dest = File.join(dest_prefix, file)
+        src = File.join(src_prefix, path)
+        dest = File.join(dest_prefix, path)
 
-        if file =~ /\./
+        if path =~ /\./
           m.file src, dest
         else
           m.directory dest
         end
 
       end
+
     end
   end
+
 end
