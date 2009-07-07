@@ -130,7 +130,7 @@ by tinymce_hammer.  If this doesn't work for your, try the advanced usage.
 
   Tinymce::Hammer.install_path = '/javascripts/lib/tiny_mce'
 
-  Tinymce::Hammer.plugins = %w(safari table paste paste2 tabfocus)
+  Tinymce::Hammer.plugins = %w(safari table paste tabfocus)
 
   Tinymce::Hammer.init = [
     [:paste_convert_headers_to_strong, true],
