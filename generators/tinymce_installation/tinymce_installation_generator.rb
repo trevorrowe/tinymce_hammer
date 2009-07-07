@@ -45,6 +45,7 @@ class TinymceInstallationGenerator < Rails::Generator::Base
         'plugins/advlink/langs',
         'plugins/advlink/langs/en_dlg.js',
         'plugins/advlink/link.htm',
+        'plugins/inlinepopups',
         'plugins/inlinepopups/editor_plugin.js',
         'plugins/inlinepopups/editor_plugin_src.js',
         'plugins/autoresize',
