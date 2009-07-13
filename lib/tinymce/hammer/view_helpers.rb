@@ -26,6 +26,7 @@ module Tinymce::Hammer::ViewHelpers
             init.mode = 'specific_textareas';
             init.editor_selector = 'tinymce';
             init.plugins = '#{Tinymce::Hammer.plugins.join(',')}';
+            init.language = '#{Tinymce::Hammer.languages.first}';
             tinyMCE.init(init);
           },
           initOnLoad : function () {
