@@ -18,6 +18,7 @@ module Tinymce::Hammer::ViewHelpers
       "#{key} : #{value.to_json}"
     }.join(', ')
 
+    setup = "init.setup = #{Tinymce::Hammer.setup};" if Tinymce::Hammer.setup
     init = <<-JS
       <script type="text/javascript">
         TinymceHammer = {
@@ -27,6 +28,7 @@ module Tinymce::Hammer::ViewHelpers
             init.editor_selector = 'tinymce';
             init.plugins = '#{Tinymce::Hammer.plugins.join(',')}';
             init.language = '#{Tinymce::Hammer.languages.first}';
+            #{setup}
             tinyMCE.init(init);
           },
           initOnLoad : function () {
