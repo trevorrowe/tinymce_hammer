@@ -2,11 +2,7 @@ module Tinymce::Hammer
 
   mattr_accessor :install_path, :languages, :themes, :plugins, :setup
 
-  mattr_writer :url_path
-
   @@install_path = '/javascripts/tiny_mce'
-
-  @@url_path = nil
 
   @@setup = nil
 
@@ -40,7 +36,7 @@ module Tinymce::Hammer
   end
 
   def self.url_path
-    @@url_path || @@install_path
+    "#{ActionController::Base.relative_url_root}#{@@install_path}"
   end
 
 end

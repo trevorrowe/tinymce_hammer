@@ -92,12 +92,6 @@ default values:
 
     '/javascripts/tiny_mce'
 
-* Tinymce::Hammer.url_path
-  
-    Defaults to the return value of Tinymce::Hammer.install_path, set this only
-    if the path inside RAILS_ROOT/public/ does not match the request path.  This
-    usually happens when you host a rails application inside a directory.
-
 * Tinymce::Hammer.plugins       
 
     ['paste']
