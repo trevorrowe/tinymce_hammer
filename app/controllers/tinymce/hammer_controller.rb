@@ -62,7 +62,7 @@ class Tinymce::HammerController < ActionController::Base
   def init_content
     @content = <<-JS
       window.tinyMCEPreInit = {
-        base : '#{Tinymce::Hammer.install_path}',
+        base : '#{Tinymce::Hammer.url_path}',
         suffix : '',  
         query : ''
       }
@@ -72,8 +72,8 @@ class Tinymce::HammerController < ActionController::Base
   end
 
   def add_content path, required, mark_done = false
-    url_path = File.join(Tinymce::Hammer.install_path, path)
-    disk_path = File.join(Rails.root, 'public', url_path)
+    url_path = File.join(Tinymce::Hammer.url_path, path)
+    disk_path = File.join(Rails.root, 'public', Tinymce::Hammer.install_path, path)
     if required or File.exists?(disk_path)
       @content += File.read(disk_path)
       if mark_done
