@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>init_tinymce (Tinymce::Hammer::ViewHelpers)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/tinymce/hammer/view_helpers.rb, line 57</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">init_tinymce</span>(<span class="ruby-identifier">classname</span>=<span class="ruby-value str">&quot;tinymce&quot;</span>)
+    <span class="ruby-identifier">init</span> = <span class="ruby-constant">Tinymce</span><span class="ruby-operator">::</span><span class="ruby-constant">Hammer</span>.<span class="ruby-identifier">init</span>.<span class="ruby-identifier">collect</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">key</span>,<span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+      <span class="ruby-node">&quot;#{key} : #{value.to_json}&quot;</span>
+    }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">', '</span>)
+    <span class="ruby-identifier">selector</span> = <span class="ruby-identifier">classname</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">classname</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;,&quot;</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">classname</span>.<span class="ruby-identifier">to_s</span>
+    <span class="ruby-identifier">setup</span> = <span class="ruby-node">&quot;init.setup = #{Tinymce::Hammer.setup};&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Tinymce</span><span class="ruby-operator">::</span><span class="ruby-constant">Hammer</span>.<span class="ruby-identifier">setup</span>
+    <span class="ruby-identifier">init</span> = <span class="ruby-value str">&quot;&lt;script type=\&quot;text/javascript\&quot;&gt;\nTinymceHammer = {\ninit : function() {\nvar init = { \#{init} };\ninit.mode = 'specific_textareas';\ninit.editor_selector = '\#{selector}';\ninit.plugins = '\#{Tinymce::Hammer.plugins.join(',')}';\ninit.language = '\#{Tinymce::Hammer.languages.first}';\n\#{setup}\ntinyMCE.init(init);\n}\n};\nTinymceHammer.init();\n&lt;/script&gt;\n&quot;</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>
