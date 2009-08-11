@@ -62,6 +62,20 @@ variable, and if found will pull data from that to populate the field with.
     <%= form.tinymce :body %>
   <% end %>
 
+== AJAX Example:
+
+	You cannot use the tinymce textarea fomr helper when using this initializing mehtodm but you can
+	add your own classname for your textarea and pass this as paramter to the init_tinymce helper.
+	
+=== Example viewfile:
+	
+	<% form_for @post do |f| %>
+	<%= f.text_area :body, class => "tinymce_ajax" %>
+	<% end %>
+	<%= init_tinymce('tinymce_ajax') %>
+	
+	You can choose whatever you want as the classname for the text_area. Just assure to pass this classname also to the textarea you want to be a tinyMCE Editor. This helps to initialize only the returned form and not all textareas already on the page. Very handy! See the RDoc for more about the parameters.
+
 == Advanced Usage
 
 The basic examples above get a TinyMCE editor up and running quickly.  You
