@@ -64,8 +64,8 @@ variable, and if found will pull data from that to populate the field with.
 
 == AJAX Example:
 
-	You cannot use the tinymce textarea fomr helper when using this initializing mehtodm but you can
-	add your own classname for your textarea and pass this as paramter to the init_tinymce helper.
+	You cannot use the tinymce textarea form helper when using this initializing method, but you can
+	add your own classname to your textarea and pass this as parameter to the init_tinymce() helper.
 	
 === Example viewfile:
 	
