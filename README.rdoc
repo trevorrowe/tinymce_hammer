@@ -64,8 +64,9 @@ variable, and if found will pull data from that to populate the field with.
 
 == AJAX Example:
 
-	You cannot use the tinymce textarea form helper when using this initializing method, but you can
-	add your own classname to your textarea and pass this as parameter to the init_tinymce() helper.
+You cannot use the tinymce textarea form helper when using this initializing method, 
+but you can add your own classname to your textarea and pass this as parameter to the 
+init_tinymce() helper.
 	
 === Example viewfile:
 	
@@ -74,7 +75,13 @@ variable, and if found will pull data from that to populate the field with.
 	<% end %>
 	<%= init_tinymce('tinymce_ajax') %>
 	
-	You can choose whatever you want as the classname for the text_area. Just assure to pass this classname also to the textarea you want to be a tinyMCE Editor. This helps to initialize only the returned form and not all textareas already on the page. Very handy! See the RDoc for more about the parameters.
+You can choose whatever you want as the classname for the text_area. Just assure to pass 
+this classname also to the textarea you want to be a tinyMCE Editor. This helps to initialize 
+only the returned form and not all textareas already on the page.
+Very handy! See the RDoc for more about the parameters.
+
+NOTICE! This helper DOES NOT load the combined js file for you. So include it with the javascript_include_tag
+helper as usual.
 
 == Advanced Usage
 
