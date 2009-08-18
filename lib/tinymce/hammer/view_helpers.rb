@@ -31,6 +31,9 @@ module Tinymce::Hammer::ViewHelpers
             #{setup}
             tinyMCE.init(init);
           },
+          addEditor : function(dom_id) {
+            tinyMCE.execCommand("mceAddControl", true, dom_id);
+          },
           initOnLoad : function () {
             var onloadAlias = window.onload;
             if (typeof window.onload != 'function') {
