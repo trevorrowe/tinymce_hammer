@@ -7,7 +7,7 @@ class Tinymce::HammerController < ActionController::Base
   caches_page :combine
   
   before_filter do |c|
-    c.headers["Content-Type"] = "Content-type: text/javascript; charset: UTF-8"
+    c.headers["Content-Type"] = "text/javascript; charset=utf-8"
   end
 
   # Combines the following files into a single .js file, and caches that file
