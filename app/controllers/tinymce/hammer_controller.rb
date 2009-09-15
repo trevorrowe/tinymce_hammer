@@ -27,8 +27,10 @@ class Tinymce::HammerController < ActionController::Base
 
     init_content
 
+    suffix = Tinymce::Hammer.src ? '_src' : ''
+
     # add the tiny mce library
-    add_content('tiny_mce.js', REQUIRED)
+    add_content("tiny_mce#{suffix}.js", REQUIRED)
 
     # add languages
     Tinymce::Hammer.languages.each do |lang|
@@ -37,7 +39,7 @@ class Tinymce::HammerController < ActionController::Base
 
     # add themes (and their languages)
     Tinymce::Hammer.themes.each do |theme|
-      add_content("themes/#{theme}/editor_template.js", REQUIRED, MARK_DONE)
+      add_content("themes/#{theme}/editor_template#{suffix}.js", REQUIRED, MARK_DONE)
       Tinymce::Hammer.languages.each do |lang|
         add_content("themes/#{theme}/langs/#{lang}.js", OPTIONAL, MARK_DONE)
       end
@@ -45,7 +47,7 @@ class Tinymce::HammerController < ActionController::Base
 
     # add plugins (and their languages)
     Tinymce::Hammer.plugins.each do |plugin|
-      add_content("plugins/#{plugin}/editor_plugin.js" , OPTIONAL, MARK_DONE)
+      add_content("plugins/#{plugin}/editor_plugin#{suffix}.js" , OPTIONAL, MARK_DONE)
       Tinymce::Hammer.languages.each do |lang|
         add_content("plugins/#{plugin}/langs/#{lang}.js", OPTIONAL, MARK_DONE)
       end
