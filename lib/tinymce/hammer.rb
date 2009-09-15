@@ -1,8 +1,10 @@
 module Tinymce::Hammer
 
-  mattr_accessor :install_path, :languages, :themes, :plugins, :setup
+  mattr_accessor :install_path, :src, :languages, :themes, :plugins, :setup
 
   @@install_path = '/javascripts/tiny_mce'
+
+  @@src = false
 
   @@setup = nil
 
