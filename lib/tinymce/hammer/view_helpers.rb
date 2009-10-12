@@ -41,7 +41,7 @@ module Tinymce::Hammer::ViewHelpers
       tinyMCE.execCommand("mceAddControl", true, dom_id);
     }
   }
-  domReady(TinymceHammer.init);
+  DomReady.ready(TinymceHammer.init);
 </script>
 JS
   end
