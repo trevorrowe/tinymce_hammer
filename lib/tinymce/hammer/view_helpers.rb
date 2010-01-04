@@ -24,9 +24,9 @@ module Tinymce::Hammer::ViewHelpers
 
     setup = "init.setup = #{Tinymce::Hammer.setup};" if Tinymce::Hammer.setup
 
-<<-JS
-<script src="#{tinymce_hammer_js_path}" type="text/javascript"></script>
-<script type="text/javascript">
+    return "
+<script src='#{tinymce_hammer_js_path}' type='text/javascript'></script>
+<script type='text/javascript'>
   TinymceHammer = {
     init : function() {
       var init = { #{init} };
@@ -38,12 +38,11 @@ module Tinymce::Hammer::ViewHelpers
       tinyMCE.init(init);
     },
     addEditor : function(dom_id) {
-      tinyMCE.execCommand("mceAddControl", true, dom_id);
+      tinyMCE.execCommand('mceAddControl', true, dom_id);
     }
   }
   DomReady.ready(TinymceHammer.init);
-</script>
-JS
+</script>"
   end
 
   def tinymce_tag name, content = '', options = {}
