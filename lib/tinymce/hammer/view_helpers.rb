@@ -10,6 +10,10 @@ module Tinymce::Hammer::ViewHelpers
     end
   end
 
+  def init_tinymce_hammer
+    tinymce_hammer_javascript_tags
+  end
+
   # Returns two script tags.  The first loads the combined javascript file
   # containing tinymce.  The second tag initializes tiny mce.
   def tinymce_hammer_javascript_tags
@@ -19,39 +23,26 @@ module Tinymce::Hammer::ViewHelpers
     }.join(', ')
 
     setup = "init.setup = #{Tinymce::Hammer.setup};" if Tinymce::Hammer.setup
-    init = <<-JS
-      <script type="text/javascript">
-        TinymceHammer = {
-          init : function() {
-            var init = { #{init} };
-            init.mode = 'specific_textareas';
-            init.editor_selector = 'tinymce';
-            init.plugins = '#{Tinymce::Hammer.plugins.join(',')}';
-            init.language = '#{Tinymce::Hammer.languages.first}';
-            #{setup}
-            tinyMCE.init(init);
-          },
-          addEditor : function(dom_id) {
-            tinyMCE.execCommand("mceAddControl", true, dom_id);
-          },
-          initOnLoad : function () {
-            var onloadAlias = window.onload;
-            if (typeof window.onload != 'function') {
-              window.onload = TinymceHammer.init;
-            } else {
-              window.onload = function() {
-                if (onloadAlias) {
-                  onloadAlias();
-                }
-                TinymceHammer.init();
-              }
-            }
-          }
-        };
-        TinymceHammer.initOnLoad();
-      </script>
-    JS
-    [javascript_include_tag(tinymce_hammer_js_path), init].join("\n")
+
+    return "
+<script src='#{tinymce_hammer_js_path}' type='text/javascript'></script>
+<script type='text/javascript'>
+  TinymceHammer = {
+    init : function() {
+      var init = { #{init} };
+      init.mode = 'specific_textareas';
+      init.editor_selector = 'tinymce';
+      init.plugins = '#{Tinymce::Hammer.plugins.join(',')}';
+      init.language = '#{Tinymce::Hammer.languages.first}';
+      #{setup}
+      tinyMCE.init(init);
+    },
+    addEditor : function(dom_id) {
+      tinyMCE.execCommand('mceAddControl', true, dom_id);
+    }
+  }
+  DomReady.ready(TinymceHammer.init);
+</script>"
   end
 
   # Returns the TinymceHammer initializer javascript only. Very handy for AJAX calls and on-demand initializing.
