@@ -21,7 +21,8 @@ On Rails (2.3+) application.  What it does:
 1. Download and this plugin and copy to vendor/plugins/tinymce_hammer
 2. Run the following generator:
 
-    script/generate tinymce_installation
+    [RAILS 2.3+] script/generate tinymce_installation
+    [RAILS 3+] rails g tinymce_installation
 
    This will install TinyMCE to:
 
@@ -29,6 +30,10 @@ On Rails (2.3+) application.  What it does:
 
    If you need a different install path for TinyMCE see the configuration
    section below for instructions on changing the default path.
+
+== Upgrading
+
+Uprade the plugin and re-run the installation generator.
 
 == Basic Usage
 
