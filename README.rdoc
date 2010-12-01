@@ -67,6 +67,19 @@ variable, and if found will pull data from that to populate the field with.
     <%= form.tinymce :body %>
   <% end %>
 
+== Deployment
+
+Tinymce defaults to caching the combined js file using ActionController's
+caches_page method. This causes problems in certain deployed environments 
+(like Heroku) where you can not write to disk, or to web servers that don't
+pass requests for js files through.  To avoid this issue run the following
+rake task:
+
+  rake tinymce:cache_js
+
+You can commit the js file that builds to your repository and that should avoid
+deploy time issues.  You could also add that to a capistrano recipe.
+
 == Advanced Usage
 
 The basic examples above get a TinyMCE editor up and running quickly.  You
