@@ -18,7 +18,7 @@ module Tinymce::Hammer::ViewHelpers
   # containing tinymce.  The second tag initializes tiny mce.
   def tinymce_hammer_javascript_tags
 
-    init = Tinymce::Hammer.init.collect{|key,value|
+    init = ::Tinymce::Hammer.init.collect{|key,value|
       "#{key} : #{value.to_json}"
     }.join(', ')
 
@@ -42,7 +42,7 @@ module Tinymce::Hammer::ViewHelpers
     }
   }
   DomReady.ready(TinymceHammer.init);
-</script>"
+</script>".html_safe
   end
 
   def tinymce_tag name, content = '', options = {}

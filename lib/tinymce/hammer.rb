@@ -37,8 +37,4 @@ module Tinymce::Hammer
     @@init
   end
 
-  def self.url_path
-    "#{ActionController::Base.relative_url_root}#{@@install_path}"
-  end
-
 end

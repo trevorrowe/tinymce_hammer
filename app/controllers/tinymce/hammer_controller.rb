@@ -80,7 +80,7 @@ addLoadEvent(domReady);};DomReady.ready=function(fn,args){bindReady();if(isReady
 
 
 window.tinyMCEPreInit = {
-  base : '#{Tinymce::Hammer.url_path}',
+  base : '#{Tinymce::Hammer.install_path}',
   suffix : '',  
   query : ''
 }
@@ -90,7 +90,7 @@ window.tinyMCE_GZ = { loaded : true };"
   end
 
   def add_content path, required, mark_done = false
-    url_path = File.join(Tinymce::Hammer.url_path, path)
+    url_path = File.join(Tinymce::Hammer.install_path, path)
     disk_path = File.join(Rails.root, 'public', Tinymce::Hammer.install_path, path)
     if required or File.exists?(disk_path)
       @content += File.read(disk_path)
