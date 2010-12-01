@@ -37,4 +37,10 @@ module Tinymce::Hammer
     @@init
   end
 
+  def self.cache_js
+    File.open("#{Rails.root}/public/javascripts/tinymce_hammer.js", 'w') do |file|
+      file.write Combiner.combined_js
+    end
+  end
+
 end
