@@ -3,7 +3,7 @@
 See the plugin website for guides/tutorials: http://tinymcehammer.lanalot.com/
 
 tinymce_hammer makes its easy to user the TinyMCE WYSIWYG editor inside a Ruby
-On Rails (2.3+) application.  What it does:
+On Rails (2.3/3+) application.  What it does:
 
 * Easy to use, two-step installation and you are ready to go.  Form helpers are
   provided for most common cases.
