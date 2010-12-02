@@ -18,13 +18,13 @@ module Tinymce::Hammer::ViewHelpers
   # containing tinymce.  The second tag initializes tiny mce.
   def tinymce_hammer_javascript_tags
 
-    if ::Tinymce::Hammer.init.is_a?(Hash)
-      init = HashWithIndifferentAccess.new(::Tinymce::Hammer.init)
+    init = ::Tinymce::Hammer.init
+    if init.is_a?(Hash)
+      init = HashWithIndifferentAccess.new(init)
       init = init.keys.sort.collect(&:to_s).sort.collect{|key|
         [key, init[key]]
       }
     end
-
     init = init.collect {|key,value| "#{key} : #{value.to_json}" }.join(', ')
 
     setup = "init.setup = #{Tinymce::Hammer.setup};" if Tinymce::Hammer.setup
