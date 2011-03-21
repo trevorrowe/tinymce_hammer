@@ -1,0 +1,5 @@
+Description:
+    Copies an install of TinyMCE into your public/javascripts/tiny_mce folder.  To change the destination folder, set install_path (e.g. Tinymce::Hammer.install_path = '/js/tinymce')
+
+Example:
+    rails generate tinymce_installation
