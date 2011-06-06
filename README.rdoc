@@ -22,14 +22,25 @@ On Rails (2.3/3+) application.  What it does:
 
 == Installation
 
-1. Download and this plugin and copy to vendor/plugins/tinymce_hammer
+1. Manually as system wide gem:
+
+    $ gem install tinymce_hammer
+    
+  Or inside your Gemfile:
+    
+    gem 'tinymce_hammer'
+
+  Remember to run:
+  
+    $ bundle install
+
 2. <b>This fork does not contain a bundled tinymce version!</b> So download it here:
 
     http://tinymce.moxiecode.com/download/download.php
 
 3. And copy it to:
 
-     RAILS_ROOT/public/javascript/tiny_mce
+     your_app/public/javascript/tiny_mce
 
 == Basic Usage
 
