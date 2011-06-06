@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
     On Rails (3+) application.}
   s.email = %q{tvdeyen@gmail.com}
   s.files = `git ls-files`.split("\n")
-  s.homepage = %q{http://tinymcehammer.lanalot.com}
+  s.homepage = %q{https://github.com/tvdeyen/tinymce_hammer}
   s.require_paths = ["lib"]
   
 end

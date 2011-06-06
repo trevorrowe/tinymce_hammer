@@ -2,7 +2,7 @@
 
 == Attention
 
-*This is the Rails 3 gem version of tinymce_hammer. If you want to use tinymce_hammer with Rails 2, please checkout branch rails2.*
+<b>This is the Rails 3 gem version of tinymce_hammer. If you want to use tinymce_hammer with Rails 2, please checkout branch rails2.</b>
 
 See the plugin website for guides/tutorials: http://tinymcehammer.lanalot.com/
 
@@ -23,7 +23,7 @@ On Rails (2.3/3+) application.  What it does:
 == Installation
 
 1. Download and this plugin and copy to vendor/plugins/tinymce_hammer
-2. *This fork does not contain a bundled tinymce version!* So download it here:
+2. <b>This fork does not contain a bundled tinymce version!</b> So download it here:
 
     http://tinymce.moxiecode.com/download/download.php
 
