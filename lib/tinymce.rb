@@ -1,2 +1,16 @@
 puts "\n+++ loaded tinymce"
-require 'tinymce/hammer/engine' if defined?(Rails) && Rails::VERSION::MAJOR == 3
+
+module Tinymce
+  class Engine < Rails::Engine
+  
+    # Load rake tasks
+    rake_tasks do
+      load File.join(File.dirname(__FILE__), 'tasks/tinymce.rake')
+    end
+  
+  end
+end
+
+ActionController::Base.send(:include, Tinymce::Hammer::ControllerMethods)
+ActionView::Base.send(:include, Tinymce::Hammer::ViewHelpers)
+ActionView::Helpers::FormBuilder.send(:include, Tinymce::Hammer::BuilderMethods)
