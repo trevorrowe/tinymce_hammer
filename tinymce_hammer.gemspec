@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{tinymce_hammer}
-  s.version = "0.2.1"
+  s.version = "0.2.2"
   
   s.authors = ["Trevor Rowe", "Thomas von Deyen"]
   s.date = %q{2011-06-05}
