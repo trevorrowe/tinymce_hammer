@@ -1,5 +1,9 @@
 = tinymce_hammer
 
+== Attention
+
+*This is the Rails 3 gem version of tinymce_hammer. If you want to use tinymce_hammer with Rails 2, please checkout branch rails2.*
+
 See the plugin website for guides/tutorials: http://tinymcehammer.lanalot.com/
 
 tinymce_hammer makes its easy to use the TinyMCE WYSIWYG editor inside a Ruby
@@ -183,4 +187,3 @@ by tinymce_hammer.  If this doesn't work for your, try the advanced usage.
 The best way to get help is to post to the mailing list (google group).  
 
   http://groups.google.com/group/tinymce_hammer/topics
-
