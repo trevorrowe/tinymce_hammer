@@ -1,4 +1,7 @@
-puts "\n+++ loaded tinymce"
+puts "\n +++++++ loaded tinymce hammer\n"
+
+require 'actioncontroller/base'
+require 'actionview'
 
 module Tinymce
   class Engine < Rails::Engine
