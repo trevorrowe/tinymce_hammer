@@ -1,4 +1,4 @@
-require 'rails'
+puts "\n+++ loaded tinymce"
 
 module Tinymce
   module Hammer

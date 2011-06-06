@@ -1,14 +1,7 @@
-require 'rails'
-require '../rails/engine.rb'
-
-ActionController::Base.send(:include, Tinymce::Hammer::ControllerMethods)
-ActionView::Base.send(:include, Tinymce::Hammer::ViewHelpers)
-ActionView::Helpers::FormBuilder.send(:include, Tinymce::Hammer::BuilderMethods)
-
 module Tinymce
   module Hammer
 
-    attr_accessor :install_path, :src, :languages, :themes, :plugins, :setup
+    mattr_accessor :install_path, :src, :languages, :themes, :plugins, :setup
 
     @@install_path = '/javascripts/tiny_mce'
 
@@ -53,3 +46,7 @@ module Tinymce
 
   end
 end
+
+ActionController::Base.send(:include, Tinymce::Hammer::ControllerMethods)
+ActionView::Base.send(:include, Tinymce::Hammer::ViewHelpers)
+ActionView::Helpers::FormBuilder.send(:include, Tinymce::Hammer::BuilderMethods)
