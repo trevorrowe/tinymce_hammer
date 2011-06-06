@@ -6,9 +6,9 @@ Gem::Specification.new do |s|
   
   s.authors = ["Trevor Rowe", "Thomas von Deyen"]
   s.date = %q{2011-06-05}
-  s.summary = %q{TinyMCE WYSIWYG editor for your Rails application.}
+  s.summary = %q{TinyMCE WYSIWYG editor for your Rails 3 application.}
   s.description = %q{TinyMCE Hammer makes its easy to use the TinyMCE WYSIWYG editor inside a Ruby
-    On Rails (2.3/3+) application.}
+    On Rails (3+) application.}
   s.email = %q{tvdeyen@gmail.com}
   s.files = `git ls-files`.split("\n")
   s.homepage = %q{http://tinymcehammer.lanalot.com}
