@@ -131,7 +131,7 @@ http://wonko.com/post/painless_javascript_lazy_loading_with_lazyload).
 == Configuration
 
 tinymce_hammer has five configuration options.  Its best to place them in an
-intializer (like config/initializer/tinymce_hammer.rb).  Here they are with their
+intializer (like config/initializers/tinymce_hammer.rb).  Here they are with their
 default values: 
 
 * Tinymce::Hammer.install_path  
