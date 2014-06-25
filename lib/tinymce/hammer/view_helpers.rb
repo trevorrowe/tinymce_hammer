@@ -38,7 +38,7 @@ module Tinymce::Hammer::ViewHelpers
       init.mode = 'specific_textareas';
       init.editor_selector = 'tinymce';
       init.plugins = '#{Tinymce::Hammer.plugins.join(',')}';
-      init.language = '#{Tinymce::Hammer.languages.first}';
+      init.language = '#{I18n.locale}';
       #{setup}
       tinyMCE.init(init);
     },
@@ -48,6 +48,32 @@ module Tinymce::Hammer::ViewHelpers
   }
   DomReady.ready(TinymceHammer.init);
 </script>".html_safe
+  end
+
+  # Returns the TinymceHammer initializer javascript only. Very handy for AJAX calls and on-demand initializing.
+  # You can pass a classname for the textarea you want to initialize, or an array of classnames you want to be initialized.
+  def init_tinymce(classname="tinymce")
+    init = Tinymce::Hammer.init.collect{|key,value|
+      "#{key} : #{value.to_json}"
+    }.join(', ')
+    selector = classname.is_a?(Array) ? classname.join(",") : classname.to_s
+    setup = "init.setup = #{Tinymce::Hammer.setup};" if Tinymce::Hammer.setup
+    init = <<-JS
+      <script type="text/javascript">
+        TinymceHammer = {
+          init : function() {
+            var init = { #{init} };
+            init.mode = 'specific_textareas';
+            init.editor_selector = '#{selector}';
+            init.plugins = '#{Tinymce::Hammer.plugins.join(',')}';
+            init.language = '#{Tinymce::Hammer.languages.first}';
+            #{setup}
+            tinyMCE.init(init);
+          }
+        };
+        TinymceHammer.init();
+      </script>
+    JS
   end
 
   def tinymce_tag name, content = '', options = {}

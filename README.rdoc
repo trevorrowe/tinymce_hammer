@@ -1,15 +1,19 @@
 = tinymce_hammer
 
+== Attention
+
+<b>This is the Rails 3 gem version of tinymce_hammer. If you want to use tinymce_hammer with Rails 2, please checkout branch rails2.</b>
+
 See the plugin website for guides/tutorials: http://tinymcehammer.lanalot.com/
 
-tinymce_hammer makes its easy to user the TinyMCE WYSIWYG editor inside a Ruby
+tinymce_hammer makes its easy to use the TinyMCE WYSIWYG editor inside a Ruby
 On Rails (2.3/3+) application.  What it does:
 
 * Easy to use, two-step installation and you are ready to go.  Form helpers are
   provided for most common cases.
 
 * Flexible, need to lazy load TinyMCE w/javascript?  Need two different editors
-  on the same page?  Want to user your own form helpers? No problem.
+  on the same page?  Want to use your own form helpers? No problem.
 
 * Fast, TinyMCE requests lots of .js files for the most basic of editor
   configurations.  It does all this over XMLHttpRequest.  tinymce_hammer
@@ -18,22 +22,25 @@ On Rails (2.3/3+) application.  What it does:
 
 == Installation
 
-1. Download and this plugin and copy to vendor/plugins/tinymce_hammer
-2. Run the following generator:
+1. Manually as system wide gem:
 
-    [RAILS 2.3+] script/generate tinymce_installation
-    [RAILS 3+] rails g tinymce_installation
+    $ gem install tinymce_hammer
+    
+  Or inside your Gemfile:
+    
+    gem 'tinymce_hammer'
 
-   This will install TinyMCE to:
+  Remember to run:
+  
+    $ bundle install
 
-     RAILS_ROOT/public/javascript/tiny_mce
+2. <b>This fork does not contain a bundled tinymce version!</b> So download it here:
 
-   If you need a different install path for TinyMCE see the configuration
-   section below for instructions on changing the default path.
+    http://tinymce.moxiecode.com/download/download.php
 
-== Upgrading
+3. And copy it to:
 
-Uprade the plugin and re-run the installation generator.
+     your_app/public/javascript/tiny_mce
 
 == Basic Usage
 
@@ -66,6 +73,27 @@ variable, and if found will pull data from that to populate the field with.
     <%= form.label :body %>
     <%= form.tinymce :body %>
   <% end %>
+
+=== Example 4: via Javascript:
+
+You cannot use the tinymce textarea form helper when using this initializing method, 
+but you can add your own classname to your textarea and pass this as parameter to the 
+init_tinymce() helper.
+	
+=== Example viewfile:
+	
+	<% form_for @post do |f| %>
+	<%= f.text_area :body, class => "my_tinymce" %>
+	<% end %>
+	<%= init_tinymce('my_tinymce') %>
+	
+You can choose whatever you want as the classname for the text_area. Just assure to pass 
+this classname also to the textarea you want to be a tinyMCE Editor. This helps to initialize 
+only the returned form and not all textareas already on the page.
+Very handy! See the RDoc for more about the parameters.
+
+NOTICE! This helper DOES NOT load the combined js file for you. So include it with the javascript_include_tag
+helper as usual.
 
 == Deployment
 
@@ -103,7 +131,7 @@ http://wonko.com/post/painless_javascript_lazy_loading_with_lazyload).
 == Configuration
 
 tinymce_hammer has five configuration options.  Its best to place them in an
-intializer (like config/initializer/tinymce_hammer.rb).  Here they are with their
+intializer (like config/initializers/tinymce_hammer.rb).  Here they are with their
 default values: 
 
 * Tinymce::Hammer.install_path  
@@ -170,4 +198,3 @@ by tinymce_hammer.  If this doesn't work for your, try the advanced usage.
 The best way to get help is to post to the mailing list (google group).  
 
   http://groups.google.com/group/tinymce_hammer/topics
-
