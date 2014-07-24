@@ -29,7 +29,7 @@ module Tinymce::Hammer::ViewHelpers
 
     setup = "init.setup = #{Tinymce::Hammer.setup};" if Tinymce::Hammer.setup
 
-    return "
+    js_tags = "
 <script src='#{tinymce_hammer_js_path}' type='text/javascript'></script>
 <script type='text/javascript'>
   TinymceHammer = {
@@ -47,7 +47,8 @@ module Tinymce::Hammer::ViewHelpers
     }
   }
   DomReady.ready(TinymceHammer.init);
-</script>".html_safe
+</script>"
+    js_tags.respond_to?(:html_safe) ? js_tags.html_safe : js_tags
   end
 
   def tinymce_tag name, content = '', options = {}
